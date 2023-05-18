@@ -1,0 +1,36 @@
+a {
+  text-decoration: none;
+  color: aliceblue;
+  font-family:'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
+}
+button{
+  background-color: rgb(0, 0, 0);
+  border-color: aliceblue;
+  border-radius: 12px;
+  border-style: groove;
+}
+h1{
+  color: #d43a3f;
+  text-align: center;
+  font-family:'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
+
+}
+h3{
+  color: aliceblue;
+  text-align: center;
+  font-family:'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
+
+}
+li{
+  color: aliceblue;
+  text-align: justify;
+  font-family:'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
+
+}
+body{
+  background-image: url(/Images/galaxy_4-wallpaper-1920x1080.jpg);
+  background-repeat: no-repeat;
+  background-size: cover;
+  font-family:'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
+
+}
