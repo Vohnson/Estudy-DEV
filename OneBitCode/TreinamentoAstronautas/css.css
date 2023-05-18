@@ -1,0 +1,31 @@
+.titulo1{
+  color: #ffffff;
+}
+.titulo2{
+  color: #f1c40f;
+}
+body{
+  background-color: #2c3e50;
+  font-family: Arial, Helvetica, sans-serif;
+}
+.fontebranca{
+  color: #ffffff;
+}
+#importante{
+  color: #e74c3c;
+}
+.dias{
+  border: 2px solid black;
+  background-color: #f1c40f;
+  font-weight: bold;
+}
+button{
+  background-color: rgb(0, 0, 0);
+  border-color: rgb(255, 255, 255);
+  border-radius: 12px;
+  border-style: groove;
+}
+a{
+  text-decoration: none;
+  color:rgb(255, 255, 255)
+}
