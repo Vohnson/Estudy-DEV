@@ -29,7 +29,12 @@ const checkEndGame = () => {
 
   if (disabledCards.length === 20) {
     clearInterval(this.loop);
-    alert(`Parabéns, ${spanPlayer.innerHTML}! Seu tempo foi de: ${timer.innerHTML}`);
+    const playerName = spanPlayer.innerHTML;
+    const timeMinutes = document.querySelector('.timer-minutes').innerHTML;
+    const timeSeconds = document.querySelector('.timer-seconds').innerHTML;
+    const totalTime = `${timeMinutes} minutos e ${timeSeconds} segundos`;
+    saveRanking(playerName, totalTime);
+    showRanking();
   }
 }
 
@@ -111,13 +116,40 @@ const loadGame = () => {
 }
 
 const startTimer = () => {
+  let minutes = 0;
+  let seconds = 0;
 
   this.loop = setInterval(() => {
-    const currentTime = +timer.innerHTML;
-    timer.innerHTML = currentTime + 1;
-  }, 1000);
+    seconds++;
+    if (seconds === 60) {
+      minutes++;
+      seconds = 0;
+    }
 
-}
+    const timerMinutes = document.querySelector('.timer-minutes');
+    const timerSeconds = document.querySelector('.timer-seconds');
+
+    timerMinutes.innerHTML = minutes;
+    timerSeconds.innerHTML = seconds;
+  }, 1000);
+};
+
+const saveRanking = (player, time) => {
+  const ranking = JSON.parse(localStorage.getItem('ranking')) || [];
+  ranking.push({ player, time });
+  localStorage.setItem('ranking', JSON.stringify(ranking));
+};
+
+const showRanking = () => {
+  const ranking = JSON.parse(localStorage.getItem('ranking')) || [];
+
+  let rankingMessage = 'Ranking:\n';
+  ranking.forEach((entry, index) => {
+    rankingMessage += `${index + 1}. ${entry.player} - ${entry.time}\n`;
+  });
+
+  alert(rankingMessage);
+};
 
 window.onload = () => {
   spanPlayer.innerHTML = localStorage.getItem('player');
