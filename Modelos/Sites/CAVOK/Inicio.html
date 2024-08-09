@@ -1,0 +1,1916 @@
+< head >
+    <
+    title > SAFE < /title> <
+meta charset = "utf-8" >
+    <
+    meta name = "viewport"
+content = "width=device-width" >
+    <
+    link rel = "shortcut icon"
+href = "/static/img/favicon.ico"
+type = "image/x-icon" >
+    <
+    meta name = "robots"
+content = "NONE,NOARCHIVE" >
+
+    <
+    !--STYLESHEETS-- >
+    <
+    link href = "/static/css/css2.css"
+rel = "stylesheet"
+type = "text/css" >
+    <
+    link href = "/static/js/mmenu/mmenu.css"
+rel = "stylesheet"
+type = "text/css" >
+    <
+    link type = "text/css"
+rel = "stylesheet"
+href = "/static/css/external-style-1-2.css" >
+
+    <
+    link rel = "stylesheet"
+href = "https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css" >
+    <
+    link href = "https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css"
+rel = "stylesheet" >
+
+    <
+    !--Imports-- >
+    <
+    link rel = "preconnect"
+href = "https://fonts.googleapis.com" >
+    <
+    link rel = "preconnect"
+href = "https://fonts.gstatic.com"
+crossorigin = "" >
+    <
+    link href = "https://fonts.googleapis.com/css2?family=Roboto:wght@400;500;700&amp;display=swap"
+rel = "stylesheet" >
+
+    <
+    !--JS-- >
+    <
+    script type = "text/javascript"
+async = ""
+src = "https://www.googletagmanager.com/gtag/js?id=G-N004RY69DH&amp;cx=c&amp;_slc=1" > < /script><script async="" src="/ / www.google - analytics.com / analytics.js "></script><script src="
+https: //code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
+    <
+    script src = "https://cdn.jsdelivr.net/npm/popper.js@1.12.9/dist/umd/popper.min.js"
+integrity = "sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q"
+crossorigin = "anonymous" > < /script> <
+script src = "https://cdn.jsdelivr.net/npm/bootstrap@4.0.0/dist/js/bootstrap.min.js"
+integrity = "sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl"
+crossorigin = "anonymous" > < /script> <
+script src = "https://code.jquery.com/jquery-1.8.1.min.js" > < /script> <
+script type = "text/javascript"
+src = "/static/js/default.js" > < /script> <
+script type = "text/javascript"
+src = "/static/js/mmenu/mmenu.polyfills.js" > < /script> <
+script type = "text/javascript"
+src = "/static/js/mmenu/mmenu.js" > < /script> <
+script src = "/static/jquery-ui/js/jquery-ui-1.10.2.custom.min.js" > < /script> <
+script type = "text/javascript"
+src = "/static/gw/js/libs/modernizr-2.6.2.min.js" > < /script> <
+script type = "text/javascript"
+src = "/static/gw/js/groundwork.all.js" > < /script> <
+script type = "text/javascript"
+src = "/static/js/jquery.maskedinput.js" > < /script>
+
+
+    <
+    script type = "text/javascript" >
+
+    function pt_br_mask() {
+
+
+
+
+    }
+
+function en_mask() {
+
+
+
+
+}
+
+function lang_mask() {
+    var lang = "pt-br";
+    if (lang == "pt-br") {
+        pt_br_mask();
+
+    } else {
+        en_mask();
+    }
+}
+
+function mask_all() {
+
+    //$(".vTimeField").attr("max-length", 5);
+    //$("#id_telefone, #id_pai_telefone, #id_mae_telefone, #id_emerg_telefone, #contato_set-group .telefone input").not("#cliente_form #id_telefone").mask("(99) 9999-9999");
+    //$("#id_celular, #id_pai_celular, #id_mae_celular, #id_emerg_celular, #id_telefone1, #id_telefone2, #contato_set-group .celular input").mask("(99) 99999999?9");
+
+    //$("#candidato_form #id_cpf").mask("99999999999");
+    //$("#candidato_form #id_anac").mask("9999?9999");
+    lang_mask();
+}
+
+function filter_many() {
+    $("#filtermany").click(function() {
+
+        var form = $("#filtermany").parent("form");
+
+        $(form).find("select").each(function(sel) {
+
+            var select = $(this);
+            var select_name = select.attr("name");
+            var select_id = select.attr("id");
+
+            $(select.find("option")[0]).attr("value", "");
+
+            // var hidden_id = select_id.replace("select_filter_", "hidden_filter_");
+            // var hidden = $("#" + hidden_id);
+            // var hidden_name = $(hidden).attr("name")
+
+            if (!select.val()) {
+                select.remove();
+                // hidden.remove();
+                return;
+            }
+
+            console.log("RUNNING at '#" + select_id);
+
+            var values = select.val();
+            values = values.replace("?", "");
+            values = values.split("&");
+            if (!values.length) {
+                return
+            }
+
+            console.log("values: " + values);
+
+            $.each(values, function(key, val) {
+
+                var sux = val.split("=");
+                var name = sux[0];
+                var value = sux[1];
+                if (name.indexOf(select_name) == -1) {
+                    return;
+                }
+                value = decodeURIComponent(value);
+                value = value.replace(/\+/g, " "); // filtro campo texto com espacos
+                var input = '<input type="hidden" name="' + name + '" value="' + value + '">';
+                console.log(input);
+                $(form).append(input);
+                // $("#"+hidden_id).attr("name", name);
+                // $("#"+hidden_id).val(value);
+                console.log("append hidden input name '" + name + "' and value '" + value + "' at form")
+
+            });
+
+            select.remove();
+            console.log("---------------------------------");
+
+        });
+
+        //var form = $("#filtermany").parent("form");
+        console.log(form.serialize());
+        $(form).submit();
+    });
+}
+
+
+function prevent_form_submit() {
+
+    window.addEventListener('offline', function(e) {
+        console.log('offline');
+        $("input:submit").attr("disabled", true);
+    });
+    window.addEventListener('online', function(e) {
+        console.log('online');
+        $("input:submit").attr("disabled", false);
+    });
+
+    $.fn.preventDoubleSubmission = function() {
+        $(this).on('submit', function(e) {
+            var $form = $(this);
+
+            if ($form.data('submitted') === true) {
+                // Previously submitted - don't submit again
+                console.log("already submitted")
+                e.preventDefault();
+            } else {
+                // Mark it so that the next submit can be ignored
+                $form.data('submitted', true);
+            }
+        });
+
+        // Keep chainability
+        return this;
+    };
+
+    $('form').preventDoubleSubmission();
+
+
+}
+
+$(document).ready(function() {
+    $(".actions-aluno").change(function() {
+        var url = $(this).children("option:selected").val();
+        window.open(url);
+        $(this).val("");
+    })
+
+    $(".actions-aluno-self").change(function() {
+        var url = $(this).children("option:selected").val();
+        window.location.href = url;
+        $(this).val("");
+    })
+    // #6710 fix
+    // $.curCSS = function(element, prop, val) {
+    //   console.log(prop, val);
+    //   return $(element).css(prop, val);
+    // };
+
+    filter_many();
+    mask_all();
+    $(".grp-add-handler").click(function() {
+        mask_all();
+    })
+    $(".actions-slot").change(function() {
+        var url = $(this).children("option:selected").val();
+        window.open(url, "_self");
+        $(this).val("");
+    })
+
+    $("#search-all").autocomplete({
+        minLength: 2,
+        source: "/search-all/?q=" + $('#search-all').val(),
+        select: function(event, ui) {
+            console.log(ui);
+            window.location.href = ui.item.url;
+        }
+    });
+
+    var url = document.location.pathname;
+    if ((url.includes('/admin/voos/vooescola/') || url.includes('/admin/voos/voo/')) && !url.includes('add')) {
+        var curso = $('#id_cursos').val();
+        var missao = $('#id_missao').val();
+
+        $("#id_missao, #id_cursos").change(function() {
+            if (!($(this).val() == missao || $(this).val() == curso)) {
+                if (!confirm("Tem certeza que deseja excluir a ficha de avaliação já lançada?")) {
+                    $('#id_cursos').val(curso);
+                    setTimeout(
+                        $('#id_missao').val(missao),
+                        1000
+                    );
+                }
+            }
+        });
+    }
+
+});
+
+(function(i, s, o, g, r, a, m) {
+    i['GoogleAnalyticsObject'] = r;
+    i[r] = i[r] || function() {
+        (i[r].q = i[r].q || []).push(arguments)
+    }, i[r].l = 1 * new Date();
+    a = s.createElement(o),
+        m = s.getElementsByTagName(o)[0];
+    a.async = 1;
+    a.src = g;
+    m.parentNode.insertBefore(a, m)
+})(window, document, 'script', '//www.google-analytics.com/analytics.js', 'ga');
+ga('create', 'UA-30951513-4', 'auto');
+ga('send', 'pageview'); <
+/script>
+
+
+
+
+<
+style >
+
+    body {
+        width: auto;
+    }
+
+    .btn {
+        width: auto;
+        height: auto;
+    }
+
+li {
+    margin: 0 2 rem 0 2 rem!important;
+    border - color: rgba(255, 255, 255, .2) !important;
+}
+.fc - border - separate tr.fc - last th, .fc - border - separate tr.fc - last td {
+        width: 1 % !important;
+        font - size: 12 px;
+    }
+    .fc - header td {
+        width: 45 % ;
+    }
+    .fc - agenda - slots td {
+        width: 100 vw;
+    }
+    .main td {
+        min - width: 8 rem;
+    }
+    .table > tbody {
+        height: 4 rem;
+        vertical - align: middle;
+    }
+    .mm - listitem a {
+        text - wrap: wrap;
+    }
+
+    <
+    /style>
+
+    <
+    style >
+    .botao - acao {
+        display: inline - block;
+        font - weight: 400;
+        line - height: 1.5;
+        color: #212529;
+            text-align: center;
+            text-decoration: none;
+            vertical-align: middle;
+            cursor: pointer;
+            -webkit-user-select: none;
+            -moz-user-select: none;
+            user-select: none;
+            background-color: transparent;
+            border: 1px solid transparent;
+            padding: .375rem .75rem;
+            font-size: 1rem;
+            border-radius: .25rem;
+            transition: color .15s ease-in-out,background-color .15s ease-in-out,border-color .15s ease-in-out,box-shadow .15s ease-in-out;
+            color: # fff;
+        background - color: #0d6efd;
+            border-color: # 0 d6efd;
+    } <
+    /style>
+
+    <
+    style >
+    .note {
+        margin - bottom: 20 px;
+        padding: 10 px;
+        border - left: 3 px solid;
+    }
+
+    .note - success {
+        border - color: #4a8564;
+            background: # b0ebca;
+        color: #3c763d;
+        }
+    </style>
+
+<style type= "text/css" > [data - truncated = "true"] {
+                overflow: hidden;
+            } [data - truncated = "true"]: after {
+                content: "...";position: absolute;
+            } < /style></head >
+            <
+            body class = "mm-wrapper mm-wrapper_sidebar-collapsed" > < nav id = "menu"
+        class = "mm-menu mm-menu_offcanvas mm-menu_iconpanel mm-menu_hidenavbar mm-menu_hidedivider mm-menu_selected-hover mm-menu_selected-parent mm-menu_sidebar-collapsed mm-menu_theme-white mm-menu_pagedim-black"
+        aria - hidden = "true" > < button class = "mm-tabstart mm-sronly"
+        aria - hidden = "true"
+        role = "presentation" > < /button><a class="mm-menu__blocker noicon" href="#menu"></a >
+
+            <
+            div class = "mm-panels" > < div id = "mm-0"
+        class = "mm-panel mm-panel_opened mm-panel_iconpanel-first" > < a class = "mm-panel__blocker noicon"
+        href = "#mm-0" > < /a><div class="mm-navbar mm-navbar_sticky"><a class="mm-navbar__title"><span>SISTEMA CAVOK</span > < /a></div >
+            <
+            ul class = "mm-listview" >
+
+            <
+            li class = "mm-listitem" >
+
+            <
+            /li>
+
+            <
+            li class = "mm-listitem" >
+            <
+            a href = "/accounts/profile/change/"
+        class = "mm-listitem__text" >
+        <
+        span > Meus dados < /span> <
+            /a> <
+            /li>
+
+            <
+            li class = "mm-listitem" >
+            <
+            a href = "/alunos/painel-assinaturas/"
+        class = "mm-listitem__text" >
+        <
+        span > Assinaturas < /span> <
+            /a> <
+            /li>
+
+            <
+            li class = "mm-listitem" >
+            <
+            a href = "/accounts/password/change/"
+        class = "mm-listitem__text" >
+        <
+        span >
+            Alterar senha <
+            /span> <
+            /a> <
+            /li>
+
+
+            <
+            li class = "mm-listitem" >
+
+
+            <
+            a class = "mm-btn mm-btn_next mm-listitem__btn mm-listitem__text noicon"
+        href = "#mm-1" > AIS Cavok < span class = "mm-sronly" > Open submenu < /span></a > < /li>
+
+
+            <
+            li class = "mm-listitem" >
+
+
+            <
+            a class = "mm-btn mm-btn_next mm-listitem__btn mm-listitem__text noicon"
+        href = "#mm-2" > Documentos < span class = "mm-sronly" > Open submenu < /span></a > < /li>
+
+
+            <
+            li class = "mm-listitem" >
+
+
+            <
+            a class = "mm-btn mm-btn_next mm-listitem__btn mm-listitem__text noicon"
+        href = "#mm-3" > Financeiro < span class = "mm-sronly" > Open submenu < /span></a > < /li>
+
+            <
+            li class = "mm-listitem" >
+
+
+            <
+            a class = "mm-btn mm-btn_next mm-listitem__btn mm-listitem__text noicon"
+        href = "#mm-4" > Escala < span class = "mm-sronly" > Open submenu < /span></a > < /li>
+
+            <
+            li class = "mm-listitem" >
+
+
+            <
+            a class = "mm-btn mm-btn_next mm-listitem__btn mm-listitem__text noicon"
+        href = "#mm-5" > Voos < span class = "mm-sronly" > Open submenu < /span></a > < /li>
+
+            <
+            li class = "mm-listitem" >
+
+
+            <
+            a class = "mm-btn mm-btn_next mm-listitem__btn mm-listitem__text noicon"
+        href = "#mm-6" > Treinamentos < span class = "mm-sronly" > Open submenu < /span></a > < /li>
+
+
+
+
+            <
+            li class = "mm-listitem" >
+
+
+            <
+            a class = "mm-btn mm-btn_next mm-listitem__btn mm-listitem__text noicon"
+        href = "#mm-7" > Biblioteca < span class = "mm-sronly" > Open submenu < /span></a > < /li>
+
+            <
+            li class = "mm-listitem" >
+
+
+            <
+            a class = "mm-btn mm-btn_next mm-listitem__btn mm-listitem__text noicon"
+        href = "#mm-8" > Atendimento ao Cliente < span class = "mm-sronly" > Open submenu < /span></a > < /li>
+
+            <
+            li class = "mm-listitem" >
+            <
+            a href = "/alunos/relprev/"
+        class = "mm-listitem__text" > RELPREV < /a> <
+            /li>
+
+
+            <
+            li class = "mm-listitem" >
+
+
+            <
+            a class = "mm-btn mm-btn_next mm-listitem__btn mm-listitem__text noicon"
+        href = "#mm-9" > Idiomas < span class = "mm-sronly" > Open submenu < /span></a > < /li>
+
+            <
+            li class = "mm-listitem" >
+            <
+            a href = "/logout/"
+        class = "mm-listitem__text" >
+        <
+        span > Logout < /span> <
+            /a> <
+            /li> <
+            /ul> <
+            /div><div id="mm-1" class="mm-panel mm-hidden" aria-hidden="true"><a class="mm-panel__blocker noicon" href="#mm-1"></a > < div class = "mm-navbar mm-navbar_sticky" > < a class = "mm-btn mm-btn_prev mm-navbar__btn noicon"
+        href = "#mm-0" > < span class = "mm-sronly" > Close submenu < /span></a > < a class = "mm-navbar__title noicon"
+        href = "#mm-0"
+        aria - hidden = "true" > < span > AIS Cavok < /span></a > < /div><ul class="mm-listview"> <
+            li class = "mm-listitem" > < a href = "https://ais.cavok.in/"
+        rel = "noicon nofollow"
+        target = "_blank"
+        class = "mm-listitem__text noicon noicon" > METAR < /a></li >
+            <
+            li class = "mm-listitem" > < a href = "https://ais.cavok.in/"
+        rel = "noicon nofollow"
+        target = "_blank"
+        class = "mm-listitem__text noicon noicon" > TAF < /a></li >
+            <
+            li class = "mm-listitem" > < a href = "https://aisweb.decea.gov.br/"
+        target = "_blank"
+        class = "mm-listitem__text noicon noicon" > ROTAER < /a></li >
+            <
+            li class = "mm-listitem" > < a href = "https://aisweb.decea.gov.br/"
+        target = "_blank"
+        class = "mm-listitem__text noicon noicon" > CARTAS < /a></li >
+            <
+            li class = "mm-listitem" > < a href = "https://ais.cavok.in/"
+        target = "_blank"
+        class = "mm-listitem__text noicon noicon" > NOTAM < /a></li >
+            <
+            li class = "mm-listitem" > < a href = "https://aisweb.decea.gov.br/"
+        target = "_blank"
+        class = "mm-listitem__text noicon noicon" > AIP < /a></li >
+            <
+            li class = "mm-listitem" > < a href = "http://www.rindat.com.br/"
+        target = "_blank"
+        class = "mm-listitem__text noicon noicon" > RINDAT < /a></li >
+            <
+            li class = "mm-listitem" > < a href = "http://www.cptec.inpe.br/"
+        target = "_blank"
+        class = "mm-listitem__text noicon noicon" > PREVISÃO < /a></li >
+            <
+            /ul></div > < div id = "mm-2"
+        class = "mm-panel mm-hidden"
+        aria - hidden = "true" > < a class = "mm-panel__blocker noicon"
+        href = "#mm-2" > < /a><div class="mm-navbar mm-navbar_sticky"><a class="mm-btn mm-btn_prev mm-navbar__btn noicon" href="#mm-0"><span class="mm-sronly">Close submenu</span > < /a><a class="mm-navbar__title noicon" href="#mm-0" aria-hidden="true"><span>Documentos</span > < /a></div > < ul class = "mm-listview" >
+            <
+            li class = "mm-listitem" > < a href = "/alunos/avops/"
+        class = "mm-listitem__text" > Avisos Operacionais < /a></li >
+            <
+            li class = "mm-listitem" > < a href = "/alunos/certificados/"
+        class = "mm-listitem__text" > Certificados < /a></li >
+            <
+            /ul></div > < div id = "mm-3"
+        class = "mm-panel mm-hidden"
+        aria - hidden = "true" > < a class = "mm-panel__blocker noicon"
+        href = "#mm-3" > < /a><div class="mm-navbar mm-navbar_sticky"><a class="mm-btn mm-btn_prev mm-navbar__btn noicon" href="#mm-0"><span class="mm-sronly">Close submenu</span > < /a><a class="mm-navbar__title noicon" href="#mm-0" aria-hidden="true"><span>Financeiro</span > < /a></div > < ul class = "mm-listview" >
+            <
+            li class = "mm-listitem" > < a href = "/alunos/extrato-financeiro/"
+        class = "mm-listitem__text" > Extrato < /a></li >
+
+            <
+            li class = "mm-listitem" > < a href = "/alunos/vendas/"
+        class = "mm-listitem__text" > Compras < /a></li >
+
+            <
+            /ul></div > < div id = "mm-4"
+        class = "mm-panel mm-hidden"
+        aria - hidden = "true" > < a class = "mm-panel__blocker noicon"
+        href = "#mm-4" > < /a><div class="mm-navbar mm-navbar_sticky"><a class="mm-btn mm-btn_prev mm-navbar__btn noicon" href="#mm-0"><span class="mm-sronly">Close submenu</span > < /a><a class="mm-navbar__title noicon" href="#mm-0" aria-hidden="true"><span>Escala</span > < /a></div > < ul class = "mm-listview" >
+            <
+            li class = "mm-listitem" > < a href = "/alunos/escala/cursos/"
+        class = "mm-listitem__text" > Cursos Teóricos < /a></li >
+            <
+            li class = "mm-listitem" > < a href = "/alunos/escala/"
+        class = "mm-listitem__text" > Escala de Voos < /a></li >
+            <
+            /ul></div > < div id = "mm-5"
+        class = "mm-panel mm-hidden"
+        aria - hidden = "true" > < a class = "mm-panel__blocker noicon"
+        href = "#mm-5" > < /a><div class="mm-navbar mm-navbar_sticky"><a class="mm-btn mm-btn_prev mm-navbar__btn noicon" href="#mm-0"><span class="mm-sronly">Close submenu</span > < /a><a class="mm-navbar__title noicon" href="#mm-0" aria-hidden="true"><span>Voos</span > < /a></div > < ul class = "mm-listview" >
+            <
+            li class = "mm-listitem" > < a href = "/alunos/voos-agendados/"
+        class = "mm-listitem__text" > Agendados < /a></li >
+            <
+            li class = "mm-listitem" > < a href = "/alunos/voos-realizados/"
+        class = "mm-listitem__text" > Realizados < /a></li >
+            <
+            li class = "mm-listitem" > < a href = "/alunos/ficha-voo/"
+        class = "mm-listitem__text" > Ficha de Voo < /a></li >
+
+            <
+            li class = "mm-listitem" > < a href = "/alunos/reserva/"
+        class = "mm-listitem__text" > Reserva / Sobreaviso < /a></li >
+
+            <
+            /ul></div > < div id = "mm-6"
+        class = "mm-panel mm-hidden"
+        aria - hidden = "true" > < a class = "mm-panel__blocker noicon"
+        href = "#mm-6" > < /a><div class="mm-navbar mm-navbar_sticky"><a class="mm-btn mm-btn_prev mm-navbar__btn noicon" href="#mm-0"><span class="mm-sronly">Close submenu</span > < /a><a class="mm-navbar__title noicon" href="#mm-0" aria-hidden="true"><span>Treinamentos</span > < /a></div > < ul class = "mm-listview" >
+            <
+            li class = "mm-listitem" > < a href = "/alunos/treinamentos-realizados/"
+        class = "mm-listitem__text" > Treinamentos realizados < /a></li >
+            <
+            li class = "mm-listitem" > < a href = "/alunos/treinamentos-agendados/"
+        class = "mm-listitem__text" > Treinamentos agendados < /a></li >
+            <
+            li class = "mm-listitem" > < a href = "/alunos/cronograma/"
+        class = "mm-listitem__text" > Cronograma de Aulas < /a></li >
+
+            <
+            li class = "mm-listitem" > < a href = "/alunos/alojamentos/"
+        class = "mm-listitem__text" > Alojamentos < /a></li >
+
+
+
+            <
+            li class = "mm-listitem" > < a href = "/alunos/escala/7/"
+        class = "mm-listitem__text" > Bem Vindo à Bordo < /a></li >
+
+
+
+            <
+            li class = "mm-listitem" > < a href = "/alunos/escala/8/"
+        class = "mm-listitem__text" > Fraseologia IFR < /a></li >
+
+
+
+            <
+            li class = "mm-listitem" > < a href = "/alunos/escala/6/"
+        class = "mm-listitem__text" > Fraseologia VFR < /a></li >
+
+
+
+            <
+            li class = "mm-listitem" > < a href = "/alunos/escala/14/"
+        class = "mm-listitem__text" > Piloto Profissional < /a></li >
+
+
+
+            <
+            li class = "mm-listitem" > < a href = "/alunos/escala/5/"
+        class = "mm-listitem__text" > Sessão Psicóloga < /a></li >
+
+
+
+            <
+            li class = "mm-listitem" > < a href = "/alunos/escala/15/"
+        class = "mm-listitem__text" > Simulador navegação PP < /a></li >
+
+
+
+            <
+            li class = "mm-listitem" > < a href = "/alunos/escala/17/"
+        class = "mm-listitem__text" > Mockup C150 - CPQ < /a></li >
+
+
+
+            <
+            li class = "mm-listitem" > < a href = "/alunos/escala/1/"
+        class = "mm-listitem__text" > Mockup C150 - SJK < /a></li >
+
+
+
+            <
+            li class = "mm-listitem" > < a href = "/alunos/escala/16/"
+        class = "mm-listitem__text" > Mockup MC01 - CPQ < /a></li >
+
+
+
+            <
+            li class = "mm-listitem" > < a href = "/alunos/escala/13/"
+        class = "mm-listitem__text" > Mockup MC01 - SJK < /a></li >
+
+
+
+            <
+            li class = "mm-listitem" > < a href = "/alunos/escala/18/"
+        class = "mm-listitem__text" > Mockup MC01 - SP < /a></li >
+
+
+
+
+            <
+            li class = "mm-listitem" > < a href = "/alunos/escala/10/"
+        class = "mm-listitem__text" > Performance Avançado < /a></li >
+
+
+
+            <
+            li class = "mm-listitem" > < a href = "/alunos/escala/11/"
+        class = "mm-listitem__text" > CRM Avançado < /a></li >
+
+
+
+            <
+            /ul></div > < div id = "mm-7"
+        class = "mm-panel mm-hidden"
+        aria - hidden = "true" > < a class = "mm-panel__blocker noicon"
+        href = "#mm-7" > < /a><div class="mm-navbar mm-navbar_sticky"><a class="mm-btn mm-btn_prev mm-navbar__btn noicon" href="#mm-0"><span class="mm-sronly">Close submenu</span > < /a><a class="mm-navbar__title noicon" href="#mm-0" aria-hidden="true"><span>Biblioteca</span > < /a></div > < ul class = "mm-listview" >
+            <
+            li class = "mm-listitem" > < a href = "/alunos/materiais-estudo/"
+        class = "mm-listitem__text" > Próxima Missão < /a></li >
+            <
+            li class = "mm-listitem" > < a href = "/alunos/materiais-estudo/biblioteca/"
+        class = "mm-listitem__text" > Biblioteca < /a></li >
+            <
+            li class = "mm-listitem" > < a href = "/alunos/provas/"
+        class = "mm-listitem__text" > Provas < /a></li >
+            <
+            /ul></div > < div id = "mm-8"
+        class = "mm-panel mm-hidden"
+        aria - hidden = "true" > < a class = "mm-panel__blocker noicon"
+        href = "#mm-8" > < /a><div class="mm-navbar mm-navbar_sticky"><a class="mm-btn mm-btn_prev mm-navbar__btn noicon" href="#mm-0"><span class="mm-sronly">Close submenu</span > < /a><a class="mm-navbar__title noicon" href="#mm-0" aria-hidden="true"><span>Atendimento ao Cliente</span > < /a></div > < ul class = "mm-listview" >
+
+            <
+            li class = "mm-listitem" > < a href = "/alunos/pesquisa-satisfacao/4/"
+        class = "mm-listitem__text" > Reclamação < /a></li >
+
+            <
+            li class = "mm-listitem" > < a href = "/alunos/pesquisa-satisfacao/5/"
+        class = "mm-listitem__text" > Sugestão < /a></li >
+
+            <
+            li class = "mm-listitem" > < a href = "/alunos/pesquisa-satisfacao/6/"
+        class = "mm-listitem__text" > Avaliação da empresa < /a></li >
+
+            <
+            /ul></div > < div id = "mm-9"
+        class = "mm-panel mm-hidden"
+        aria - hidden = "true" > < a class = "mm-panel__blocker noicon"
+        href = "#mm-9" > < /a><div class="mm-navbar mm-navbar_sticky"><a class="mm-btn mm-btn_prev mm-navbar__btn noicon" href="#mm-0"><span class="mm-sronly">Close submenu</span > < /a><a class="mm-navbar__title noicon" href="#mm-0" aria-hidden="true"><span>Idiomas</span > < /a></div > < ul class = "mm-listview" >
+            <
+            li class = "mm-listitem" > < a href = "/lang/?language=pt-br&amp;next=/alunos/"
+        style = "display:flex;gap: 1rem;"
+        class = "mm-listitem__text" > < img src = "/static/img/br.png"
+        class = "hidden-print"
+        title = "Traduzir para Português"
+        alt = "BR" > Português < /a></li >
+            <
+            li class = "mm-listitem" > < a href = "/lang/?language=en&amp;next=/alunos/"
+        style = "display: flex;gap: 1rem;"
+        class = "mm-listitem__text" > < img src = "/static/img/eng.png"
+        class = "hidden-print"
+        title = "Translate to English"
+        alt = "EN" > Inglês < /a></li >
+            <
+            /ul></div > < /div><button class="mm-tabend mm-sronly" aria-hidden="true" role="presentation"></button > < /nav> <
+            div id = "page"
+        class = "mm-page mm-slideout" >
+
+
+
+
+        <
+        style >
+            .a - tag - menu {
+                color: #fff;
+                text - decoration: none!important;
+            } <
+            /style>
+
+            <
+            header id = "grp-header"
+        class = " noPrint" >
+
+        <
+        !--NAVIGATION-- >
+
+        <
+        div class = "app-header" >
+        <
+        !--top-- >
+        <
+        div class = "container-left" >
+
+        <
+        span id = "hamburger"
+        style = "width:auto;" >
+            <
+            a href = "#menu"
+        class = "mburger mburger--collapse noicon" >
+        <
+        b > < /b> <
+            b > < /b> <
+            b > < /b> <
+            /a> <
+            /span>
+
+            <
+            a class = "a-tag-menu"
+        href = "/alunos/" >
+            <
+            div class = "site-logo"
+        style = "text-decoration: auto!important;" >
+            <
+            span style = "font-size: 22px; color: white;" > SAFE < /span> <
+            /div> <
+            /a>
+
+            <
+            !--fim top-- >
+            <
+            /div>
+
+            <
+            /div></header >
+
+
+
+            <
+            div class = "main" >
+            <
+            div class = "content" >
+
+
+
+
+            <
+            style >
+            .fc - today {
+                background: #ccc!important;
+            }
+            .bg - purple {
+                background: #727cb6 !important; }
+	</style>
+
+	
+
+	<style>
+		@media (max-width: 415px) {
+			.three {
+				margin-top:5rem;
+			}
+			.button {
+				width:100% !important;
+				margin-top:1rem;
+			}
+		}
+
+		.table {
+			border-color: transparent !important;
+		}
+
+		.widget-card-externo {
+			overflow: auto;
+			margin:1rem 0 1rem 0;
+		}
+
+		.btn {
+			margin-top: .5rem;
+		}
+	</style>
+
+	<div class= "padded" >
+                    <
+                    div class = "container-fluid" >
+                    <
+                    div class = "row" >
+                    <
+                    div class = "col-lg-6" >
+                    <
+                    h1 class = "zero museo-slab bounceInLeft animated" > Bem - vindo ao acesso acadêmico < /h1>
+
+                    <
+                    div class = "col-lg-4" >
+                    <
+                    p > Acesso rápido: < /p> <
+                    a class = "btn btn-primary"
+                href = "/alunos/escala/" > Visualizar escala < /a> <
+                a class = "btn btn-success"
+                href = "/alunos/materiais-estudo/biblioteca/" > Estudar < /a> <
+                /div>
+
+                <
+                /div> <
+                div class = "col-lg-6 widget-card-externo mb-4"
+                style = "display:flex;" >
+
+
+
+                <
+                div class = "pull-left double-pad-right hide-on-mobile" >
+
+                <
+                img src = "https://cavok-voesafe.storage.googleapis.com/us-central1/files/photos/screenshot_2023-11-27-19-37-57-453_commiuivideoplayer.jpg?Signature=8w4Bm3qXJrumLEYUZtxHEYfVAW8%3D&amp;Expires=1714483306&amp;GoogleAccessId=GOOG6BX3R4F5MKJZVP6Z"
+                style = "height:90px;" >
+
+                <
+                /div>
+
+                <
+                style >
+                .unstyled p {
+                    margin: 0;
+                }
+
+                .link_proxima_missao {
+                    color: black;
+                    text - decoration: underline;
+                }
+                .link_proxima_missao: hover {
+                        color: black;
+                    } <
+                    /style> <
+                    div class = "pull-left" >
+
+                    <
+                    ul class = "unstyled" >
+
+
+
+
+                    <
+                    p > < strong > Bem - vindo Vohnson Vinícius Andrade Machado Miranda(597) < /strong></p >
+                    <
+                    p > ANAC: 464831 - Validade CMA: 28 / 02 / 2025 < /p>
+
+                    <
+                    p > Horas de voo na SAFE: hora(s) < /p>
+
+
+                    <
+                    p > Próxima missão: < strong > < a class = "link_proxima_missao"
+                href = "/alunos/materiais-estudo/" > PCA - Prático & gt;Fase 3 - Adaptação & gt;AD 03 < /a></strong > < /p>
+
+
+
+
+                <
+                /ul> <
+                /div>
+
+
+
+                <
+                /div> <
+                /div> <
+                /div> <
+                /div> <
+                hr >
+
+
+
+
+                <
+                article class = "row" >
+                <
+                aside class = "col-lg-6" >
+                <
+                div class = "widget-card-externo mb-8"
+                style = "overflow: hidden;" >
+                <
+                h3 > Pesquisa de satisfação < /h3> <
+                p class = "quicksand" > Ajude a melhorar nosso atendimento a você < /p> <
+                div class = "row" >
+                <
+                div class = "one whole two-up-small-tablet one-up-mobile" >
+                <
+                ul class = "list" >
+
+                <
+                li > < a href = "/alunos/pesquisa-satisfacao/4/"
+                style = "color:black;" > Reclamação < /a></li >
+
+                <
+                li > < a href = "/alunos/pesquisa-satisfacao/5/"
+                style = "color:black;" > Sugestão < /a></li >
+
+                <
+                li > < a href = "/alunos/pesquisa-satisfacao/6/"
+                style = "color:black;" > Avaliação da empresa < /a></li >
+
+                <
+                /ul> <
+                /div> <
+                /div> <
+                /div> <
+                hr >
+
+
+                <
+                div class = "widget-card-externo mb-8" >
+                <
+                h3 > Voos agendados < /h3> <
+                table data - max = "14"
+                class = "table table-striped table-bordered table-sm"
+                style = "font-size:13px;" >
+                <
+                thead >
+                <
+                tr >
+                <
+                th > Data < /th> <
+                th > Aeronave < /th> <
+                th > Instrutor < /th> <
+                th > Status < /th> <
+                /tr> <
+                /thead>
+
+                <
+                tbody >
+
+                <
+                tr >
+                <
+                td > 01 / 05 / 2024 < br > 16: 05 - MC - 01(SJK) < /td> <
+                    td > MC01 < br > PS - SFE < /td> <
+                    td >
+                    MURILO CAIXETA
+
+                    <
+                    /td> <
+                    td > CONFIRMADO < /td> <
+                    /tr>
+
+                    <
+                    tr >
+                    <
+                    td > 04 / 05 / 2024 < br > 06: 30 - MC - 01(SJK) < /td> <
+                    td > MC01 < /td> <
+                    td >
+
+
+                    <
+                    /td> <
+                    td > PENDENTE < /td> <
+                    /tr>
+
+                    <
+                    tr >
+                    <
+                    td > 07 / 05 / 2024 < br > 08: 25 - MC - 01(SJK) < /td> <
+                    td > MC01 < /td> <
+                    td >
+
+
+                    <
+                    /td> <
+                    td > PENDENTE < /td> <
+                    /tr>
+
+                    <
+                    tr >
+                    <
+                    td > 07 / 05 / 2024 < br > 16: 05 - MC - 01(SJK) < /td> <
+                    td > MC01 < /td> <
+                    td >
+
+
+                    <
+                    /td> <
+                    td > PENDENTE < /td> <
+                    /tr>
+
+                    <
+                    tr >
+                    <
+                    td > 11 / 05 / 2024 < br > 08: 25 - MC - 01(SJK) < /td> <
+                    td > MC01 < /td> <
+                    td >
+
+
+                    <
+                    /td> <
+                    td > PENDENTE < /td> <
+                    /tr>
+
+                    <
+                    tr >
+                    <
+                    td > 12 / 05 / 2024 < br > 08: 25 - MC - 01(SJK) < /td> <
+                    td > MC01 < /td> <
+                    td >
+
+
+                    <
+                    /td> <
+                    td > PENDENTE < /td> <
+                    /tr>
+
+                    <
+                    tr >
+                    <
+                    td > 13 / 05 / 2024 < br > 16: 05 - MC - 01(SJK) < /td> <
+                    td > MC01 < /td> <
+                    td >
+
+
+                    <
+                    /td> <
+                    td > PENDENTE < /td> <
+                    /tr>
+
+                    <
+                    tr >
+                    <
+                    td > 20 / 05 / 2024 < br > 16: 05 - MC - 01(SJK) < /td> <
+                    td > MC01 < /td> <
+                    td >
+
+
+                    <
+                    /td> <
+                    td > PENDENTE < /td> <
+                    /tr>
+
+                    <
+                    tr >
+                    <
+                    td > 31 / 05 / 2024 < br > 10: 20 - MC - 01(SJK) < /td> <
+                    td > MC01 < /td> <
+                    td >
+
+
+                    <
+                    /td> <
+                    td > PENDENTE < /td> <
+                    /tr>
+
+                    <
+                    /tbody>
+
+                    <
+                    tfoot >
+                    <
+                    tr >
+                    <
+                    td colspan = "4" > < a class = "btn btn-danger"
+                href = "/alunos/escala/" > Escala de voo < /a></td >
+                <
+                /tr> <
+                /tfoot> <
+                /table> <
+                /div>
+
+                <
+                hr >
+
+
+
+                <
+                div class = "widget-card-externo mb-8" >
+                <
+                h3 > Últimas Movimentações Financeiras < /h3> <
+                table data - max = "14"
+                class = "table table-striped table-bordered table-sm"
+                style = "width: 100%; font-size:13px;" >
+                <
+                thead >
+                <
+                tr >
+                <
+                td > Data < /td> <
+                td > Descrição < /td> <
+                td > Valor < /td> <
+                td > Saldo < /td> <
+                /tr> <
+                /thead>
+
+                <
+                tbody >
+
+                <
+                tr >
+                <
+                td colspan = "4" > < p > Nenhuma Movimentação Financeira < /p></td >
+                <
+                /tr>
+
+                <
+                /tbody>
+
+                <
+                tfoot >
+                <
+                tr >
+                <
+                td colspan = "4" >
+                <
+                a href = "/alunos/extrato-financeiro/"
+                class = "btn btn-danger" > Ver Extrato < /a> <
+                /td> <
+                /tr> <
+                /tfoot> <
+                /table> <
+                /div>           
+
+
+                <
+                div class = "pad-right pad-left" > < /div>
+
+                <
+                /aside>
+
+
+
+                <
+                aside class = "col-lg-6" >
+                <
+                div class = "widget-card-externo mb-8" >
+                <
+                h3 > Últimos voos realizados < /h3> <
+                table data - max = "14"
+                class = "table table-striped table-bordered table-sm"
+                style = "width: 100%; font-size:13px;" >
+                <
+                thead >
+                <
+                tr >
+                <
+                td > Data < /td> <
+                td > Instrutor < /td> <
+                td > Tempo < /td> <
+                td > Ações < /td> <
+                /tr> <
+                /thead>
+
+                <
+                tbody >
+
+                <
+                tr >
+                <
+                td > 20 / 04 / 2024 < /td> <
+                td > VILLAS BOAS < /td> <
+                td > 1,
+                5 < /td> <
+                td >
+                <
+                a class = "btn btn-dark noicon"
+                href = "/alunos/avaliacao-voo/9398/"
+                target = "_blank" > Avaliação < /a> <
+                /td> <
+                /tr>
+
+                <
+                tr >
+                <
+                td > 23 / 04 / 2024 < /td> <
+                td > MURILO CAIXETA < /td> <
+                td > 1,
+                3 < /td> <
+                td >
+                <
+                a class = "btn btn-dark noicon"
+                href = "/alunos/avaliacao-voo/9444/"
+                target = "_blank" > Avaliação < /a> <
+                /td> <
+                /tr>
+
+                <
+                /tbody>
+
+                <
+                tfoot >
+                <
+                tr >
+                <
+                td >
+                <
+                a href = "/alunos/voos-realizados/"
+                class = "btn btn-danger" > Ver Todos < /a> <
+                /td> <
+                td >
+                <
+                a class = "btn btn-primary"
+                href = "/alunos/escala/" > Agendar voo < /a> <
+                /td> <
+                /tr> <
+                /tfoot> <
+                /table> <
+                /div>
+
+                <
+                hr >
+
+
+
+
+                <
+                div class = "widget-card-externo mb-8" >
+                <
+                h3 > Treinamentos realizados < /h3> <
+                table data - max = "14"
+                class = "table table-striped table-bordered table-sm"
+                style = "width: 100%; font-size:13px;" >
+                <
+                thead >
+                <
+                tr >
+                <
+                th > Barra < /th> <
+                th > Data < /th> <
+                th > Hora < /th> <
+                th > Instrutor < /th> <
+                th > Duração < /th> <
+                /tr> <
+                /thead> <
+                tbody >
+
+                <
+                tr >
+                <
+                td > Fraseologia VFR - Fraseologia VFR < /td> <
+                td > 23 / 03 / 2024 < /td> <
+                td > 09: 00 < /td> <
+                    td > < /td> <
+                    td > 03: 00 < /td> <
+                    /tr>
+
+                    <
+                    tr >
+                    <
+                    td > Fraseologia VFR - Fraseologia VFR < /td> <
+                    td > 24 / 03 / 2024 < /td> <
+                    td > 09: 00 < /td> <
+                    td > < /td> <
+                    td > 03: 00 < /td> <
+                    /tr>
+
+                    <
+                    tr >
+                    <
+                    td > Mockup MC01 - SJK - Mockup MC01 < /td> <
+                    td > 29 / 03 / 2024 < /td> <
+                    td > 10: 00 < /td> <
+                    td > < /td> <
+                    td > 02: 00 < /td> <
+                    /tr>
+
+                    <
+                    tr >
+                    <
+                    td > Mockup MC01 - SJK - Mockup MC01 < /td> <
+                    td > 05 / 04 / 2024 < /td> <
+                    td > 16: 00 < /td> <
+                    td > < /td> <
+                    td > 02: 00 < /td> <
+                    /tr>
+
+                    <
+                    tr >
+                    <
+                    td > Mockup MC01 - SJK - Mockup MC01 < /td> <
+                    td > 14 / 04 / 2024 < /td> <
+                    td > 10: 00 < /td> <
+                    td > < /td> <
+                    td > 02: 00 < /td> <
+                    /tr>
+
+                    <
+                    tr >
+                    <
+                    td > Sessão Psicóloga - Sessão Psicóloga < /td> <
+                    td > 18 / 04 / 2024 < /td> <
+                    td > 09: 00 < /td> <
+                    td > < /td> <
+                    td > 02: 00 < /td> <
+                    /tr>
+
+                    <
+                    /tbody> <
+                    tfoot >
+                    <
+                    tr >
+                    <
+                    td colspan = "5" >
+                    <
+                    a href = "/alunos/treinamentos-realizados/"
+                class = "btn btn-danger" > Ver Todos < /a> <
+                /td> <
+                /tr> <
+                /tfoot> <
+                /table> <
+                /div>
+
+
+
+                <
+                div class = "widget-card-externo mb-8" >
+                <
+                h3 > Treinamentos agendados < /h3> <
+                table data - max = "14"
+                class = "table table-striped table-bordered table-sm"
+                style = "width: 100%; font-size:13px;" >
+                <
+                thead >
+                <
+                tr >
+                <
+                th > Barra < /th> <
+                th > Data < /th> <
+                th > Hora < /th> <
+                th > Instrutor < /th> <
+                th > Duração < /th> <
+                /tr> <
+                /thead> <
+                tbody >
+
+                <
+                tr >
+                <
+                td > Bem Vindo à Bordo - Bem Vindo à Bordo < /td> <
+                td > 02 / 04 / 2024 < /td> <
+                td > 19: 00 < /td> <
+                    td > < /td> <
+                    td > 02: 00 < /td> <
+                    /tr>
+
+                    <
+                    tr >
+                    <
+                    td > Mockup MC01 - SJK - Mockup MC01 < /td> <
+                    td > 02 / 05 / 2024 < /td> <
+                    td > 14: 00 < /td> <
+                    td > < /td> <
+                    td > 02: 00 < /td> <
+                    /tr>
+
+                    <
+                    /tbody> <
+                    tfoot >
+                    <
+                    tr >
+                    <
+                    td colspan = "5" >
+                    <
+                    a href = "/alunos/treinamentos-agendados/"
+                class = "btn btn-danger" > Ver Todos < /a> <
+                /td> <
+                /tr> <
+                /tfoot> <
+                /table> <
+                /div>
+
+
+
+
+                <
+                hr >
+
+                <
+                /aside></article >
+
+                <
+                aside class = "one whole bounceInRight animated" >
+                <
+                div class = "row-widgets" >
+
+
+                <
+                div class = "col-widgets-g" >
+                <
+                div class = "card-widgets" >
+                <
+                div class = "text-widget-div" >
+                <
+                div style = "margin-bottom: 10px" >
+                <
+                span class = "widgets-title" > < b > SAFE < /b></span >
+                <
+                /div> <
+                span style = "font-size: 15px;" > Rua Dra.Tânia Lis Tizzoni Nogueira < /span> <
+                br >
+                <
+                span > São José dos Campos SP 12227751 < /span> <
+                br >
+                <
+                span style = "font-size: 15px; font-weight: bold" > contato @voesafe.com.br | (11) 9 8239 - 9843 < /span> <
+                /div> <
+                div class = "icon-widget-div icon-yellow" >
+                <
+                i class = "fas fa-building" > < /i> <
+                /div> <
+                /div> <
+                /div>
+
+
+
+                <
+                div class = "col-widgets-g" >
+                <
+                div class = "card-widgets" >
+                <
+                div class = "text-widget-div" >
+                <
+                div style = "margin-bottom: 10px" >
+                <
+                span class = "widgets-title" > < b > SAFE CAMPINAS < /b></span >
+                <
+                /div> <
+                span style = "font-size: 15px;" > SYLVIA DA SILVA BRAGA < /span> <
+                br >
+                <
+                span > CAMPINAS SP 13082105 < /span> <
+                br >
+                <
+                span style = "font-size: 15px; font-weight: bold" > contato @voesafe.com.br | (19) 999667 - 7465 < /span> <
+                /div> <
+                div class = "icon-widget-div icon-yellow" >
+                <
+                i class = "fas fa-building" > < /i> <
+                /div> <
+                /div> <
+                /div>
+
+
+                <
+                /div> <
+                /aside>
+
+
+
+                <
+                /div> <
+                /div>
+
+
+                <
+                script type = "text/javascript"
+                src = "/static/fullcalendar/fullcalendar.min.js" > < /script> <
+                script type = "text/javascript" >
+                $(document).ready(function() {
+                    $('#calendarsim').fullCalendar({
+                        firstDay: 1,
+                        slotMinutes: 30,
+                        allDaySlot: false,
+                        height: 900,
+                        header: {
+                            left: 'prev,next today',
+                            center: 'title',
+                            right: 'month,agendaWeek,agendaDay'
+                        },
+                        timeFormat: 'H:mm',
+                        ignoreTimezone: false,
+                        editable: false,
+                        droppable: false,
+                        axisFormat: "HH:mm",
+                        /*columnFormat: {
+                        	month: 'dddd',
+                        	week:  'dddd dd/MM',
+                        	day:   'dddd dd/MM/yyyy'
+                        },
+                        titleFormat: {
+                        	month: 'MMMM/yyyy',
+                        	week: "dd[ 'de' MMMM 'de' yyyy]{ ' - ' dd 'de' MMMM  'de' yyyy}",
+                        	day: "dddd, d 'de' MMMM 'de' yyyy"
+                        },*/
+                        monthNames: [
+                            "Janeiro",
+                            "Fevereiro",
+                            "Março",
+                            "Abril",
+                            "Maio",
+                            "Junho",
+                            "Julho",
+                            "Agosto",
+                            "Setembro",
+                            "Outubro",
+                            "Novembro",
+                            "Dezembro",
+                        ],
+                        dayNames: [
+                            "Domingo",
+                            "Segunda",
+                            "Terça",
+                            "Quarta",
+                            "Quinta",
+                            "Sexta",
+                            "Sábado"
+                        ],
+                        dayNamesShort: ['Dom', 'Seg', 'Ter', 'Qua', 'Qui', 'Sex', 'Sab'],
+                        buttonText: {
+                            prev: '<', // <
+                            next: '>', // >
+                            prevYear: '<<', // <<
+                            nextYear: '>>', // >>
+                            today: "Hoje",
+                            month: "Mês",
+                            week: "Semana",
+                            day: "Dia"
+                        },
+                        events: [
+
+
+                        ]
+                    });
+                }); <
+                /script> <
+                script type = "text/javascript" >
+                $(document).ready(function() {
+                    $('#calendarcurso').fullCalendar({
+                        firstDay: 1,
+                        slotMinutes: 30,
+                        allDaySlot: false,
+                        height: 900,
+                        header: {
+                            left: 'prev,next today',
+                            center: 'title',
+                            right: 'month,agendaWeek,agendaDay'
+                        },
+                        timeFormat: 'H:mm',
+                        ignoreTimezone: false,
+                        editable: false,
+                        droppable: false,
+                        axisFormat: "HH:mm",
+                        /*columnFormat: {
+                        	month: 'dddd',
+                        	week:  'dddd dd/MM',
+                        	day:   'dddd dd/MM/yyyy'
+                        },
+                        titleFormat: {
+                        	month: 'MMMM/yyyy',
+                        	week: "dd[ 'de' MMMM 'de' yyyy]{ ' - ' dd 'de' MMMM  'de' yyyy}",
+                        	day: "dddd, d 'de' MMMM 'de' yyyy"
+                        },*/
+                        monthNames: [
+                            "Janeiro",
+                            "Fevereiro",
+                            "Março",
+                            "Abril",
+                            "Maio",
+                            "Junho",
+                            "Julho",
+                            "Agosto",
+                            "Setembro",
+                            "Outubro",
+                            "Novembro",
+                            "Dezembro",
+                        ],
+                        dayNames: [
+                            "Domingo",
+                            "Segunda",
+                            "Terça",
+                            "Quarta",
+                            "Quinta",
+                            "Sexta",
+                            "Sábado"
+                        ],
+                        dayNamesShort: ['Dom', 'Seg', 'Ter', 'Qua', 'Qui', 'Sex', 'Sab'],
+                        buttonText: {
+                            prev: '<', // <
+                            next: '>', // >
+                            prevYear: '<<', // <<
+                            nextYear: '>>', // >>
+                            today: "Hoje",
+                            month: "Mês",
+                            week: "Semana",
+                            day: "Dia"
+                        },
+                        events: [
+
+                        ]
+                    });
+                }); <
+                /script>
+
+
+                <
+                script type = "text/javascript" >
+                $(document).ready(function() {
+                    let dataFieldNames = ["data_nascimento", "rg_data_emissao", "exp_ultima_data"];
+                    for (let i = 0; i < dataFieldNames.length; i++) {
+                        let field = document.getElementsByName(dataFieldNames[i])[0];
+
+                        if (field) {
+                            $("#" + field.id).addClass("datefield")
+                        }
+                    }
+
+                    $(".vTimeField, .time, .timeinput").mask("99:99");
+                    $("#id_cnpj").mask('99999999999ZZZ', {
+                        translation: {
+                            'Z': {
+                                pattern: /[0-9]/,
+                                optional: true
+                            }
+                        }
+                    });
+
+                    $(".country.numeric").mask('99ZZ', {
+                        translation: {
+                            'Z': {
+                                pattern: /[0-9]/,
+                                optional: true
+                            }
+                        }
+                    });
+                    $(".area.numeric").mask('9ZZZZ', {
+                        translation: {
+                            'Z': {
+                                pattern: /[0-9]/,
+                                optional: true
+                            }
+                        }
+                    });
+                    $(".number.numeric").mask('9999ZZZZZZZZZZZZZZZZ', {
+                        translation: {
+                            'Z': {
+                                pattern: /[0-9]/,
+                                optional: true
+                            }
+                        }
+                    });
+                    $(".extension.numeric").mask('ZZZZZZZZZZZZZZZZZZZZ', {
+                        translation: {
+                            'Z': {
+                                pattern: /[0-9]/,
+                                optional: true
+                            }
+                        }
+                    });
+
+
+                    $(".datefield").mask("99/99/9999");
+                    $(".vDateField").mask("99/99/9999");
+                    $(".date").mask("99/99/9999");
+                    $("input.datetime").mask("99/99/9999 99:99");
+
+                });
+
+                function set_external_links_target_nofollow() {
+                    if (!document.getElementsByTagName) {
+                        return
+                    }
+                    var e = document.getElementsByTagName("a");
+                    for (var t = 0; t < e.length; t++) {
+                        var n = e[t];
+                        var r = n.getAttribute("href");
+                        if (!r) {
+                            continue
+                        }
+                        var i = n.getAttribute("rel");
+                        var s = n.getAttribute("class");
+                        var o = n.getAttribute("target");
+                        if (r.indexOf("#") == 0 || o && o.indexOf("_blank") != -1) {
+                            s += " noicon";
+                            n.setAttribute("class", s)
+                        }
+                        if (r.indexOf(location.hostname) == -1 && r.indexOf("http") == 0) {
+                            n.target = "_blank";
+                            s += " noicon";
+                            n.setAttribute("class", s);
+                            if (i && i.indexOf("nofollow") == -1) {
+                                n.rel += " nofollow"
+                            }
+                        }
+                    }
+                }
+                window.onload = function() {
+                    set_external_links_target_nofollow()
+                } <
+                /script>
+
+                <
+                script language = "javascript" >
+                $(".actions-aluno").change(function() {
+                    var url = $(this).children("option:selected").val();
+                    window.open(url);
+                    $(this).val("");
+                }) <
+                /script>
+
+                <
+                script >
+                $(function() {
+                    var e,
+                        t,
+                        n = $(window);
+                    $("body"), $("body, html");
+                    (String.prototype.capitalize = function() {
+                        return this.charAt(0).toUpperCase() + this.slice(1);
+                    }),
+                    (function() {
+                        if (Mmenu) {
+                            var e = new Mmenu(
+                                    "#menu", {
+                                        extensions: {
+                                            all: ["theme-white", "pagedim-black"],
+                                            "(max-width: 767px)": ["fx-menu-slide"]
+                                        },
+                                        counters: false,
+                                        iconPanels: {
+                                            add: !0,
+                                            hideDivider: !0,
+                                            hideNavbar: !0,
+                                            visible: "first"
+                                        },
+                                        keyboardNavigation: !0,
+                                        navbar: {
+                                            title: "SISTEMA CAVOK"
+                                        },
+                                        setSelected: {
+                                            hover: !0,
+                                            parent: !0
+                                        },
+                                        sidebar: {
+                                            collapsed: {
+                                                use: 768,
+                                                hideNavbar: !0,
+                                                hideDivider: !0
+                                            },
+                                            expanded: {
+                                                use: false,
+                                                initial: "remember"
+                                            }
+                                        },
+                                    }, {
+                                        offCanvas: {
+                                            page: {
+                                                selector: "#page"
+                                            }
+                                        },
+                                        searchfield: {
+                                            clear: !0
+                                        }
+                                    }
+                                ).API,
+                                t = $("#hamburger").children(".mburger");
+
+                            e.bind("close:finish", function() {
+                                    setTimeout(function() {
+                                        t.attr("href", "#menu");
+                                    }, 100);
+
+                                }),
+                                e.bind("open:finish", function() {
+                                    setTimeout(function() {
+                                        t.attr("href", "#page");
+                                    }, 100);
+                                });
+                        }
+                    })(),
+                    $("a.rotate").on("click", function(e) {
+                            e.preventDefault(), $(this).parent().toggleClass("portrait");
+                        }),
+
+                        (function() {
+                            var e = $(".phone, .tablet").not(".no-auto-open");
+                            if (e.length) {
+                                var t = {};
+                                e.each(function() {
+                                        var e = $(this).offset().top - 150;
+                                        e < 0 && (e = 0), t[e] || (t[e] = $()), (t[e] = t[e].add(this));
+                                    }),
+                                    n.on("scroll.phones", function() {
+                                        var e = n.scrollTop();
+                                        for (var i in t)
+                                            e > i &&
+                                            (t[i].each(function(e) {
+                                                    var t = $(this).find("iframe"),
+                                                        n = 0;
+                                                    if (t.length) {
+                                                        t = t[0].contentWindow;
+                                                        var i = setInterval(function() {
+                                                            if (t.$) {
+                                                                var e = t.$("#menu")[0].mmApi;
+                                                                e && (e.open && e.open(), clearInterval(i));
+                                                            }
+                                                            ++n > 50 && clearInterval(i);
+                                                        }, 250 + 250 * e);
+                                                    }
+                                                }),
+                                                delete t[i]);
+                                        for (var i in t) return;
+                                        $(this).off("scroll.phones");
+                                    }),
+                                    setTimeout(function() {
+                                        n.trigger("scroll.phones");
+                                    }, 2500);
+                            }
+                        })();
+                }); <
+                /script>
+
+                <
+                script >
+                function atualizarTemplate() {
+                    const url = "javascript:alert('URL incorreta. Por favor, contate o suporte');";
+
+                    fetch(url).then(response => {
+                            console.log('Requisição concluída com sucesso');
+                            location.reload();
+                        })
+                        .catch(error => {
+                            console.error('Ocorreu um erro na requisição:', error);
+                        });
+                } <
+                /script>
+
+                <
+                /div><div class="mm-wrapper__blocker mm-slideout"><a class="mm-tabstart noicon" href="#page" aria-hidden="true" role="presentation"><span class="mm-sronly">Close menu</span > < /a><button class="mm-tabend mm-sronly" aria-hidden="true" role="presentation"></button > < /div></body >
