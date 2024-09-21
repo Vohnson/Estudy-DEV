@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Exercício 5</title>
+  </head>
+  <body>
+    <!--🔵 |  Título -->
+    <h1>Formulário de inscrição</h1>
+
+    <!--🔵 |  Formulário -->
+    <form action="#" method="post">
+      <!--🔵 |  Campo: Nome -->
+      <div>
+        <label for="nome">Nome:</label><br>
+        <input type="text" id="nome" name="nome" required />
+      </div>
+      <br>
+      <!--🔵 | Campo: Email -->
+      <div>
+        <label for="nome">Email:</label><br>
+        <input type="email" id="e-mail" name="e-mail" required />
+      </div>
+      <br>
+      <!--🔵 | Campo: WhatsApp -->
+      <div>
+        <label for="whatsapp">WhatsApp:</label>
+        <br>
+        <input type="text" id="whatsapp" name="whatsapp" required />
+      </div>
+      <br>
+      <!--🔵 | Campo: Radio -->
+      <div>
+        <label>Área de atuação:</label>
+        <br>
+        <input type="radio" name="area" id="dev" value="dev" required>
+        <label for="dev">Desenvolvimento</label>
+
+        <input type="radio" name="area" id="qa" value="qa" required>
+        <label for="qa">Quality Assurance (QA)</label>
+
+        <input type="radio" name="area" id="dados" value="dados" required>
+        <label for="dados">Análise de Dados</label>
+
+        <input type="radio" name="area" id="infra" value="infra" required>
+        <label for="infra">Infraestrutura</label>
+      </div>
+      <br>
+      <!--🔵 | Campo: Obsercações -->
+      <div>
+        <label for="observacoes">Observações:</label>
+        <br>
+        <textarea id="observacoes" name="observacoes"></textarea>
+      </div>
+      <br>
+      <!--🔵 | Campo: Checkbox -->
+      <input type="checkbox" id="ofertas" name="ofertas" checked required />
+      <label for="ofertas">Desejo receber novidades e ofertas por email.</label>
+      <br>
+      <!--🔵 | Campo: Botão Enviar -->
+      <input type="submit" value="Enviar" />
+    </form>
+  </body>
+</html>

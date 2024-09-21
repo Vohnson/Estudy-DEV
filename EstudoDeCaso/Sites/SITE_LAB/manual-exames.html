@@ -1,0 +1,410 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+
+<head>
+    <!-- Meta tags Obrigatórias -->
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+    <!-- Bootstrap CSS -->
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css"
+        integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO" crossorigin="anonymous">
+
+    <!--  jQuery -->
+    <script src="https://code.jquery.com/jquery-1.12.4.min.js"
+        integrity="sha256-ZosEbRLbNQzLpnKIkEdrPv7lOy9C27hHQ+Xp8a4MxAQ=" crossorigin="anonymous"></script>
+
+    <!-- OWL Slide-->
+    <link rel="stylesheet" type='text/css' href="css/owl-slide.css" rel="stylesheet" type="text/css">
+
+    <!-- OWL Slide-->
+    <link rel="stylesheet" type='text/css' href="css/animate.css" rel="stylesheet" type="text/css">
+
+    <!-- Estilo customizado -->
+    <link rel="stylesheet" type="text/css" href="css/style.css">
+
+    <!-- Hover -->
+    <link rel="stylesheet" type="text/css" href="css/hover-min.css" media="all">
+
+    <!-- Font Awesome -->
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.3.1/css/all.css"
+        integrity="sha384-mzrmE5qonljUremFsqc01SB46JvROS7bZs3IO2EmfFsd15uHvIt+Y8vEf7N7fWAU" crossorigin="anonymous">
+    <script src="https://kit.fontawesome.com/7fc82f1cdb.js"></script>
+
+    <link href="https://fonts.googleapis.com/css?family=Archivo+Black&display=swap" rel="stylesheet">
+    <!--Título e favicon-->
+    <title> Laboratório de Análises Clínicas em Garanhuns - AlfaLab</title>
+    <link rel="icon" href="imgs/favicon/favicon_128_128.png">
+</head>
+
+<body>
+
+    <!-- Início do cabeçalho -->
+    <header>
+        <div class="row justify-content-center">
+            <div class="col-sm-0 mt-2">
+                <a href="index.html">
+                    <img src="imgs/alfalab.svg" class="img-fluid" alt="Alfa Lab Logotipo">
+                </a>
+            </div>
+        </div>
+
+        <div class="row">
+            <div class="col-md-12 col-sm-12 col-12 icon-redes-sociais ml-3 pb-3 text-center link">
+                <a href="https://bit.ly/2JYEXMA" target="blank"><i class="fab fa-facebook-f p-1 "></i></a>
+                <a href="https://www.instagram.com/laboratorioalfalab/" target="blank"><i
+                        class="fab fa-instagram p-1 "></i></a>
+            </div>
+        </div>
+        </div>
+
+
+        <div class="row justify-content-center">
+            <div class="container">
+                <div class="col-md-12">
+                    <nav class="navbar navbar-expand-md  bg-dark rounded-top">
+
+                        <!-- Botão responsivo -->
+                        <button class="navbar-toggler m-auto" type="button" data-toggle="collapse"
+                            data-target="#nav-principal">
+                            <i class="fas fa-bars "></i>
+                        </button>
+
+                        <!-- Lista itens do menu -->
+                        <div class="collapse navbar-collapse " id="nav-principal">
+                            <ul class="navbar-nav m-auto">
+                                <li class="nav-item">
+                                    <a class="nav-link cool-link active" href="index.html">Início</a>
+                                </li>
+                                <li class="nav-item">
+                                    <a class="nav-link cool-link" href="alfalab.html">Alfa Lab</a>
+                                </li>
+                                <li class="nav-item dropdown">
+                                    <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button"
+                                        data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Exames
+                                    </a>
+
+                                    <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+                                        <a class="nav-link cool-link" href="exames.html">ORIENTAÇÕES</a>
+                                        <a class="nav-link cool-link" href="manual-exames.html">MANUAL DE EXAMES</a>
+                                    </div>
+                                </li>
+
+                                <li class="nav-item">
+                                    <a class="nav-link cool-link" href="unidades.html">Unidades</a>
+                                </li>
+
+                                <li class="nav-item dropdown">
+                                    <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button"
+                                        data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Coleta
+                                    </a>
+
+                                    <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+                                        <a class="nav-link cool-link" href="coletadomiciliar.html">Domiciliar</a>
+                                        <a class="nav-link cool-link" href="coletainfantil.html">Infantil</a>
+
+                                    </div>
+                                </li>
+
+                                <li class="nav-item">
+                                    <a class="nav-link cool-link" href="convenios.html">Convênios</a>
+                                </li>
+                                <li class="nav-item">
+                                    <a class="nav-link cool-link" href="contato.html">Contato</a>
+                                </li>
+
+                                <button class="btn btn-info efeito cor-efeito ml-2" type="submit" data-toggle="modal"
+                                    data-target="#exampleModal">RESULTADOS<i class="fas fa-poll-h ml-2"></i></button>
+                            </ul>
+
+                        </div>
+                    </nav>
+                </div>
+            </div>
+        </div>
+    </header>
+    <!-- Fim do cabeçalho -->
+
+    <!-- Início modal Resultados-->
+    <div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel"
+        aria-hidden="true">
+        <div class="modal-dialog" role="document">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h2 class="modal-title text-uppercase" id="exampleModalLabel">Resultados <span
+                            style="color: #8E4B86;">
+                            Online </span></h2>
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                        <span aria-hidden="true">&times;</span>
+                    </button>
+                </div>
+                <div class="modal-body">
+                    <p>
+                        Para acessar e consultar seus resultados online é necessário ter em mãos o número de
+                        identificação e senha fornecidos no protocolo do exame.
+                    </p>
+                    <!--sline Inicio-->
+                    <form id="frmAutenticacao" name="frmAutenticacao" onSubmit="return valida()"
+                        action="https://www.resultados.com.br/index.aspx?origem=ALFALAB-PE" method="post">
+                        <input type="hidden" name="frame" value="S">
+                        <input type="hidden" name="redir" value="http://www.alfalabonline.com.br/">
+                        <div class="form-group">
+                            <div class="inputWithIcon">
+                                <label for="inputID" class="col-form-label">ID</label>
+                                <input type="text" name="identificacao" id="identificacao" placeholder="Digite seu ID"
+                                    class="form-control form-control-lg" maxlength="20" required>
+                                <i class="fa fa-user fa-lg fa-fw" aria-hidden="true" style="top:50px;"></i>
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <div class="inputWithIcon">
+                                <label for="inputPassword" class="col-form-label">SENHA</label>
+                                <input type="password" name="senha" id="senha" placeholder="Digite sua senha"
+                                    class="form-control form-control-lg" maxlength="20" required>
+                                <i class="fas fa-key fa-lg fa-fw" style="top:50px;" aria-hidden="true"></i>
+                            </div>
+                        </div>
+                        <div class="modal-footer">
+                            <button type="submit" class="btn btn-lg btn-block"
+                                style="background-color: #8E4B86; color:#FFF;">ENVIAR</button>
+                        </div>
+                    </form>
+                    <!--sline Fim-->
+                </div>
+
+            </div>
+        </div>
+    </div>
+    <!--Final do Modal Resultados-->
+    <!--Button WhatsApp-->
+    <a href="https://api.whatsapp.com/send?phone=5587981385922" style="position:fixed;width:60px;height:60px;bottom:40px;right:40px;background-color:#25d366;color:#FFF;border-radius:50px;text-align:center;font-size:30px;box-shadow: 1px 1px 2px #888;
+   z-index:1000;" target="_blank">
+        <i style="margin-top:16px" class="fa fa-whatsapp"></i>
+    </a>
+    <!-- Início seção CONVÊNIOS -->
+    <section>
+        <img src="imgs/manual-exames.png" alt="Manual de exames" class="img-fluid bgs">
+
+        <div class="container">
+            <!-- Início lista convêncios -->
+            <div class="row p-5">
+                <div class="col-md-12 col-sm-12 col-12">
+                    <h2 class="mcare-h2">INSTRUÇÕES <span class="cor-destaque">GERAIS</span></h2>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-md-12 mb-5 marckup">
+                    <p><strong>&nbsp; &nbsp;1.1</strong>&nbsp;<strong>Jejum</strong></p>
+
+                    <p class="text-justify ml-5"><i class="fas fa-square" aria-hidden="true"></i>&nbsp;
+                        Conforme recomendações atuais, os laboratórios não exigirão mais jejum para realização
+                        de exames, exceto quando houver orientação do medico assistente, ou em algumas situações
+                        especificas
+                    </p>
+
+                    <p><strong>&nbsp; &nbsp;1.2</strong>&nbsp;<strong>Hábitos Alimentares</strong></p>
+
+                    <p class="text-justify ml-5"><i class="fas fa-square" aria-hidden="true"></i>&nbsp;
+                        Orienta-se a manutenção da dieta habitual nos cinco dias que antecedem a realização dos exames.
+                    </p>
+
+                    <p><strong>&nbsp; &nbsp;1.3</strong>&nbsp;<strong>Fumo</strong></p>
+
+                    <p class="text-justify ml-5"><i class="fas fa-square" aria-hidden="true"></i>&nbsp;
+                        Pode levar a alterações nas dosagens de alguns exames, por isso deve ser evitado antes da
+                        realização da coleta de sangue.
+                    </p>
+
+                    <p><strong>&nbsp; &nbsp;1.4</strong>&nbsp;<strong>Atividade Física</strong></p>
+
+                    <p class="text-justify ml-5"><i class="fas fa-square" aria-hidden="true"></i>&nbsp;
+                        Deve ser evitada a realização da coleta de sangue logo após a prática de exercícios físicos.
+                    </p>
+
+                    <p><strong>&nbsp; &nbsp;1.5</strong>&nbsp;<strong>Bebida Alcoólica</strong></p>
+
+                    <p class="text-justify ml-5"><i class="fas fa-square" aria-hidden="true"></i>&nbsp;
+                        Orienta-se evitar a ingestão de bebidas alcoólicas nas 72 horas que antecedem a coleta.
+                    </p>
+
+                    <p><strong>&nbsp; &nbsp;1.6</strong>&nbsp;<strong>Medicações</strong></p>
+
+                    <p class="text-justify ml-5"><i class="fas fa-square" aria-hidden="true"></i>&nbsp;
+                        Apenas o seu médico pode suspender suas medicações.
+                    </p>
+
+                    <p class="text-justify ml-5"><i class="fas fa-square" aria-hidden="true"></i>&nbsp;
+                        É de extrema importância a informação sobres todas as substancias em uso (sejam vitaminas,
+                        cremes, suplementos
+                        ou medicamentos), pois eles podem interferir na dosagem de alguns exames.
+                    </p>
+
+
+
+                </div>
+
+
+
+
+            </div>
+        </div>
+    </section>
+
+    <!-- Início do footer-->
+    <!--Main Footer-->
+    <footer>
+        <!-- Alfa Lab Footer -->
+        <div class="main-footer">
+            <div class="container">
+                <div class="row">
+                    <!--Footer Content-->
+                    <div class="col-lg-3 col-md-3 col-sm-6 col-xs-12">
+                        <div class="mcare-foot-appform footer-box">
+                            <h4> Saiba Mais </h4>
+                            <div class="fb-page">
+                                <img class="mb-2" src="imgs/logo-branca.png" alt=""><br>
+                                <span class="text-center">O Alfa Lab é um laboratório de análises clínicas fundado
+                                    em 2019, com ampla experiência
+                                    laboratorial.</span>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!--Footer Contact Details-->
+                    <div class="col-lg-3 col-md-3 col-sm-6 col-xs-12">
+                        <div class="mcare-foot-address footer-box">
+                            <h4>Matriz</h4>   
+                                <p class="text-content"><i class="fa fa-home"></i>
+                                    <!-- <span style="font-weight:bold;">Garanhuns</span><br/>
+                                    Rua David Jorge Rodrigues, 232,
+                                    Heliópolis, 55297-580<br/> -->
+                                    <a href="tel:(87)3761-9084">(87) 3761-9084</a> | 
+                                    <a href="https://api.whatsapp.com/send?phone=5587981385922" target="blank">98138-5922</a><br/>
+                                    7h às 17h - Segunda à Sexta
+                                </p>
+                        </div>
+                    </div>
+                    <!--Latest Tweets-->
+                    <div class="col-lg-3 col-md-3 col-sm-6 col-xs-12">
+                        <div class="mcare-foot-address footer-box">
+                            <h4>Unidades</h4>
+                            <div class="row">
+                                <p class="text-content"><i class="fa fa-home"></i>
+                                    <span style="font-weight:bold;">Ideal Center - Posto I (Garanhuns)</span><br/>
+                                    7h às 17h - Segunda à Sexta
+                                </p>
+                            </div>
+
+                            <div class="row">
+                                <p class="text-content"><i class="fa fa-home"></i>
+                                    <span style="font-weight:bold;">Clínica Revitalle - Posto II (Águas Belas)</span><br/>
+                                    6h30 às 12h - Segunda à Sexta
+                                </p>
+                            </div>
+
+                            <div class="row">
+                                <p class="text-content"><i class="fa fa-home"></i>
+                                    <span style="font-weight:bold;">Saloá - Posto III</span><br/>
+                                    7h às 13h - Segunda à Sexta
+                                </p>
+                            </div>
+
+                            <div class="row">
+                                <p class="text-content"><i class="fa fa-home"></i>
+                                    <span style="font-weight:bold;">Iati - Posto IV</span><br/>
+                                    7h às 12h - Segunda à Sexta
+                                </p>
+                            </div>
+
+                            <div class="row">
+                                <p class="text-content"><i class="fa fa-home"></i>
+                                    <span style="font-weight:bold;">Alfavip - Posto V (Garanhuns)</span><br/>
+                                    7h às 17h - Segunda à Sexta<br/>
+                                    7h às 11h - Sábado
+                                </p>
+                            </div>
+
+                            <div class="row">
+                                <p class="text-content"><i class="fa fa-home"></i>
+                                    <span style="font-weight:bold;">Canhotinho - Posto VI</span><br/>
+                                    6h30 às 12h30 - Segunda à Sexta<br/>
+                                    7h às 11h - Sábado
+                                </p>
+                            </div>
+
+                            
+                        </div>
+                    </div>
+                    <script>(function (d, s, id) {
+                            var js, fjs = d.getElementsByTagName(s)[0];
+                            if (d.getElementById(id))
+                                return;
+                            js = d.createElement(s);
+                            js.id = id;
+                            js.src = "https://connect.facebook.net/pt_BR/sdk.js#xfbml=1&version=v4.0";
+                            fjs.parentNode.insertBefore(js, fjs);
+                        }(document, 'script', 'facebook-jssdk'));</script>
+                    <!-- facebook -->
+                    <div class="col-lg-3 col-md-3 col-sm-6 col-xs-12">
+                        <div class="mcare-foot-appform footer-box">
+                            <h4> Curta </h4>
+                            <div class="fb-page" data-href="https://www.facebook.com/alfalabgaranhuns/
+                                data-small-header=" false" data-adapt-container-width="true" data-hide-cover="false"
+                                data-show-facepile="true">
+                                <blockquote cite="https://www.facebook.com/alfalabgaranhuns/"
+                                    class="fb-xfbml-parse-ignore"><a
+                                        href="https://www.facebook.com/alfalabgaranhuns/">Alfa Lab
+                                        Análises Clínicas</a></blockquote>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <!--Sub Footer-->
+        <div class="sub-footer">
+            <div class="container">
+                <div class="row">
+                    <div class="col-md-6 col-lg-6 col-sm-6 col-xs-12">
+                        <p class="text-content copy-content">©<span class="theme-color-text">Alfa Lab</span> 2020.
+                            Todos
+                            os direitos reservados.
+
+                    </div>
+                    <div class="col-md-6 col-lg-6 col-sm-6 col-xs-12">
+                        <ul class="foot-social">
+                            <li>
+                                <a href="https://www.facebook.com/alfalabgaranhuns/" target="_blank"><i
+                                        class="fab fa-facebook-f"></i></a>
+                            </li>
+                            <li>
+                                <a href="https://www.instagram.com/laboratorioalfalab" target="_blank"><i
+                                        class="fab fa-instagram"></i></a>
+                            </li>
+
+
+                            <li><span style="color:#6d6d6d; font-size:10px; margin-left: 10px;">Desenvolvido
+                                    por:</span><a href="www.showupdigital.com.br" target="_blank"><img
+                                        src="imgs/showup-logo.png" /></a></li>
+
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </footer>
+    <!-- Final do footer-->
+
+
+    <script src="js/bootstrap.min.js" type="text/javascript">
+    </script>
+    <!--Plugin -->
+    <script src="js/plugins.js">
+    </script>
+    <!-- Inicializa OWL -->
+    <script src="js/calling.js">
+    </script>
+</body>
+
+
+</html>
