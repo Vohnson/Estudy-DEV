@@ -1,0 +1,11 @@
+<svg width="36" height="36" viewBox="0 0 36 36" fill="none" xmlns="http://www.w3.org/2000/svg">
+<g id="Caret up">
+<path id="up" d="M16.5695 12.4641C17.3541 11.6611 18.6459 11.6611 19.4305 12.4641L24.2065 17.3523C25.444 18.6188 24.5466 20.75 22.776 20.75H13.224C11.4534 20.75 10.556 18.6188 11.7935 17.3523L16.5695 12.4641Z" fill="url(#paint0_linear_133_2036)"/>
+</g>
+<defs>
+<linearGradient id="paint0_linear_133_2036" x1="7" y1="11" x2="18.3874" y2="30.2711" gradientUnits="userSpaceOnUse">
+<stop stop-color="#FD5309"/>
+<stop offset="1" stop-color="#FF9101"/>
+</linearGradient>
+</defs>
+</svg>

@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Calculadora Web</title>
+    <link rel="stylesheet" href="CSS/style.css">
+</head>
+<body>
+    <div id="calculadora">
+        <input id="tela" readonly="true">
+        <div id="teclas">
+            <button type="button" onclick="inputDisplay('+')"class="operador-btn" id="operator">+</button>
+            <button type="button" onclick="inputDisplay('7')" id="operator">7</button>
+            <button type="button" onclick="inputDisplay('8')" id="operator">8</button>
+            <button type="button" onclick="inputDisplay('9')" id="operator">9</button>
+            <button type="button" onclick="inputDisplay('-')"class="operador-btn" id="operator">-</button>
+            <button type="button" onclick="inputDisplay('4')" id="operator">4</button>
+            <button type="button" onclick="inputDisplay('5')" id="operator">5</button>
+            <button type="button" onclick="inputDisplay('6')" id="operator">6</button>
+            <button type="button" onclick="inputDisplay('*')"class="operador-btn" id="operator">*</button>
+            <button type="button" onclick="inputDisplay('1')" id="operator">1</button>
+            <button type="button" onclick="inputDisplay('2')" id="operator">2</button>
+            <button type="button" onclick="inputDisplay('3')" id="operator">3</button>
+            <button type="button" onclick="inputDisplay('/')"class="operador-btn" id="operator">/</button>
+            <button type="button" onclick="inputDisplay('0')" id="operator">0</button>
+            <button type="button" onclick="inputDisplay('.')" id="operator">.</button>
+            <button type="button" onclick="calculate()"class="operador-btn" id="calculate">=</button>
+            <button type="button" onclick="cleanDisplay()"class="operador-btn" id="clean-display">C</button>
+            <button onclick="openPopup()" id="abrir-popup" id="open-popup">Mudar Tema</button>
+        </div>
+    </div>
+        <div id="popup-temas" class="popup">
+            <button onclick="setTheme('bosque')" id="bosque" class="btn-popup">Bosque</button>
+            <button onclick="setTheme('cerejeira')" id="cereja" class="btn-popup">Cerejeira</button>
+            <button onclick="setTheme('acude')" id="agua" class="btn-popup">Açude</button>
+            <button onclick="setTheme('areia')" id="areia" class="btn-popup">Areia</button>
+            <div class="caixa-cancelar">
+                <button onclick="closePopup()" id="cancelar" class="btn-popup">X</button>
+            </div>
+        </div>
+    <script src="JS/index.js"></script> 
+</body>
+</html>
